@@ -1,4 +1,4 @@
-# @aphorica/vuetify-message-box
+# @aphorica/vuetify-blackout-panel
 
 github: https://aphorica.github.com<br/>
 Web: https://aphorica.com
