@@ -5,11 +5,11 @@ Web: https://aphorica.com
 
 ## Installing
 
-`npm install @aphorica/vuetify-message-box`
+`npm install @aphorica/vuetify-blackout-panel`
 
 or
 
-`yarn add @aphorica/vuetify-message-box`
+`yarn add @aphorica/vuetify-blackout-panel`
 
 ## Running the Demo
 
@@ -24,8 +24,8 @@ Open a browser on `localhost:8080`
 
 ## Overview
 
-General Blackout implementation along with helper.  Configurable with
-title, message, buttons, checkboxes, and completion action.
+General Blackout implementation along with helper.  Displays
+either a message or a spinner.
 
 Consists of three components:
 
@@ -44,7 +44,7 @@ incorporated in the template html and the code as follows:
     ...
   </template>
   <script>
-    import {BlackoutComponent, BlackoutMixin} from '@aphorica/vuetify-message-box'
+    import {BlackoutComponent, BlackoutMixin} from '@aphorica/vuetify-blackout-panel'
 
     export default {
       components: { ..., BlackoutComponent, ... },
@@ -69,97 +69,55 @@ BlackoutComponent.
 
 For example:
 ```
-  import {Blackout} from '@aphorica.vuetify-message-box'
+  import {BlackoutPanel} from '@aphorica.vuetify-blackout-panel'
 
    ...
 
-  Blackout('Title', 'This is a message')
-        // (simplest invocation)
+  needBlackout() {
+    BlackoutPanel.showBlackout('This is a message')
+          // (simplest invocation)
+  }
+
+  done() {
+    BlackoutPanel.hideBlackout()
+  }
 ```
 </dd>
 </dt>
 
+If showing a message, the panel instantiates a '_v-dialog_',
+with the msg displayed in the contained '_v-card-text_' subpanel.
+
 ## Invocation
 
-Blackout(title, message, &lt;info&gt;)
-
+<dl>
+<dt>BlackoutPanel.showBlackout(&lt;msg | 'busy'&gt;)</dt>
+<dd>
+Shows the blackout panel with either the message or a spinner.<br/>
 args:
 <dl>
-<dt>title</dt>
-<dd>The value to appear in the <em>v-card-title</em> subpanel.
-</dd>
-<dt>message</dt>
-<dd>The value to appear in the <em>v-card-text</em> subpanel.
-    This can contain html.</dd>
-<dt>info (optional)</dt>
-<dd>Contains information to drive the message box behavior.</dd>
+<dt>msg</dt>
+<dd>The message to appear in the <em>v-card-text</em> subpanel</dd>
+<dt>'busy'</dt>
+<dd>Show the spinner box without a message.</dd>
 </dl>
- 
-If present, the _info_ object contains the following:
-```
-{
-  btn1: {
-    text: (the button text),
-    primary: (optional, boolean) (whether the button is highlighted and has focus) ,
-  },
-
-  btn2: {
-    (same members as above)
-  },
-
-  prompts: (optional) [
-    {
-      prompt: (string) - the prompt string,
-      'initial-value': (string) - the initial value of the corresponding field,
-      rules: [ (set of rule functions for the corresponding input field )],
-      modifier: function for the corresponding input field,
-      'setFocus': set this to the initially focused element,
-      'selectAllOnFocus': self explanatory
-    }
-  ] (see notes)
-
-  doneFn: (optional) a function that will be called when the Blackout is closed.
-          called with:
-            - btnIX - the button index that was triggered (1-based), and
-            - responses - (if prompts array is present)  responses to the
-              input fields.
-
-  returnFocus: (optional) (a dom object to which the focus should be returned
-                when the Blackout is closed.)
-}
-```
-
-### Notes on the Info Object:
-  If a prompts array is present, a number of things happen:
-  
-  - textfields will be displayed with the prompt strings.  Responses will be returned
-    as an array, corresponding to each prompt.
-
-  - rules are of the form: `v => (some condition test about v) || '(some error message)'`.  A rule
-    returns either 'true' or a string indicating the error.  The string decorates the corresponding
-    input field.
-
-  - If rules are specified and there is a primary button, that button will be disabled until the
-    rules are satisfied.
-
-  - A modifier function accepts the current value and modifies it, if necessary, to
-    fit constraints (such as lower casing everything.)  Modifiers are applied in 'keyup'
-    handler.
+</dd>
+<dt>BlackoutPanel.hideBlackout()</dt>
+<dd>
+Hide the blackout panel.  Can also be accomplished with
+`BlackoutPanel.showBlackout('')` (send an empty string.)
+</dd>
+</dl>
 
 ## General Notes
- - In any invocation, this is non-blocking.  You need to remember 
-   your app is still running &ndash; any code following will be executed.
-
-   See further examples for acting on responses.
-
- - It is, however, implemented in a modal state &ndash; the user cannot
-   interact with the application until they respond.
+ - The panel is implemented in a modal state &ndash; the user cannot
+   interact with the application until it is hidden.
 
  - This will take on any styling you specify for _v-dialog_ and _v-card_,
    which means it should blend in seamlessly for any other dialogs you are
    using.
 
- - Would like to consolidate the BlackoutMixin and Blackout component
+ - Would like to consolidate the BlackoutMixin and BlackoutComponent
    into a single file, but that will require some refactoring and research.
 
  - As the name implies, this is currently based on _vuetify.js_ &mdash; may
