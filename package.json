@@ -1,0 +1,13 @@
+{
+  "name": "@aphorica/vuetify-blackout-panel",
+  "version": "1.0.0",
+  "description": "Shaded blackout w/message or busy icon",
+  "main": "index.js",
+  "repository": "https://github.com/Aphorica/vuetify-blackout-panel",
+  "author": "Rick Berger - Aphorica, Inc. <gbergeraph@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "@aphorica/vue-event-bus": "^1.0.0"
+  }
+}
