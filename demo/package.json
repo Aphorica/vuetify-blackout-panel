@@ -7,7 +7,7 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
-    "@aphorica/vuetify-blackout-panel": "^1.0.0",
+    "@aphorica/vuetify-blackout-panel": "^1.0.1",
     "core-js": "^2.6.5",
     "vue": "^2.6.10",
     "vuetify": "^1.5.5"
