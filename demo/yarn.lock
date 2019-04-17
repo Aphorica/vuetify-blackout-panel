@@ -7,8 +7,10 @@
   resolved "https://registry.yarnpkg.com/@aphorica/vue-event-bus/-/vue-event-bus-1.0.0.tgz#9c5549f2fdccfe48398d21807c2d3f924ce7fd70"
   integrity sha512-0/j27kBjaSCv6ZZY/9Om0pC1R5DhjkFM2qGwwXUD/+KF8i4QCXwkEQvT5fZ8IYjzoNjsGd0Jwlh0A3hocD9a7g==
 
-"@aphorica/vuetify-blackout-panel@file:.yalc/@aphorica/vuetify-blackout-panel":
-  version "1.0.0-a4d12e69"
+"@aphorica/vuetify-blackout-panel@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@aphorica/vuetify-blackout-panel/-/vuetify-blackout-panel-1.0.0.tgz#4662c92bf386fde1bdef7b57ba8a1daf825e7a29"
+  integrity sha512-fZX/9G5vmSHvHsDt9YrcqqFnIM6u0iXelb1t0VjbG3wOGEiQloiECWmHtZJ2ld4ft2Bt9HZJbr/uVnVip+QYJA==
   dependencies:
     "@aphorica/vue-event-bus" "^1.0.0"
 
