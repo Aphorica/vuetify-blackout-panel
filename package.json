@@ -1,6 +1,6 @@
 {
   "name": "@aphorica/vuetify-blackout-panel",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Shaded blackout w/message or busy icon",
   "main": "index.js",
   "repository": "https://github.com/Aphorica/vuetify-blackout-panel",

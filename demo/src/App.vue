@@ -3,14 +3,14 @@
     <BlackoutComponent v-if="blackoutMsg.length > 0"
                       :show="blackoutMsg.length > 0"
                       :msg="blackoutMsg" />
-    <v-toolbar dark app>
+    <v-app-bar dark app>
       <v-layout row justify-space-around>
-        <v-btn raised round color="info"
+        <v-btn raised rounded color="info"
               @click="basic">Basic</v-btn>
-        <v-btn raised round color="info"
+        <v-btn raised rounded color="info"
               @click="busy">Busy</v-btn>
       </v-layout>
-    </v-toolbar>
+    </v-app-bar>
   </v-app>
 </template>
 

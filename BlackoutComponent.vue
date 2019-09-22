@@ -5,9 +5,9 @@
         <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
       </svg>
     </v-layout>
-    <v-dialog v-else v-model="showing" persistent max-width="500">
+    <v-dialog v-else v-model="showing" persistent eager max-width="500">
       <v-card dark>
-        <v-card-text>
+        <v-card-text class="blackout-msg-ctnr">
           <div class="list-color blackout-msg">
             {{msg}}
           </div>
@@ -18,10 +18,11 @@
 </template>
 
 <style lang="scss">
-  .blackout-msg { font-size:3rem; text-align:center;}
-  .spinner-layout { height: 100%;
+.blackout-msg-ctnr { height:100px; padding:0!important; display:flex; justify-content: center; }
+.blackout-msg { align-self: center; font-size:3rem; }
+.spinner-layout { height: 100%;
                     background-color: rgba(0, 0, 0, 0.25)
-                  }
+                }
 
 $offset: 187;
 $duration: 1.4s;
